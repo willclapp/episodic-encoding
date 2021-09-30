@@ -43,11 +43,13 @@ timeline.push(end_practice);
 for (i = 0; i < num_memload * 2; i++) {
     timeline.push(memload_audio_objects[i]);
     timeline.push(memload_response_objects[i]);
+    timeline.push(inter_trial);
 }
 
 for (i = 0; i < num_exp * 2; i++) {
     timeline.push(exp_audio_objects[i]);
     timeline.push(exp_response_objects[i]);
+    timeline.push(inter_trial);
 }
 
 let social_instructions = {

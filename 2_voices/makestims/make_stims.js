@@ -49,7 +49,7 @@ let response_temp = {
     choices: ['s', 'k'], 
     stimulus: 'UNKNOWN', 
     trial_duration: 4000, 
-    post_trial_gap: 100, 
+    post_trial_gap: 0, 
     data: {},
     on_finish: function(data) {
         // uncomment next line to see the result of each trial

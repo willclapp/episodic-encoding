@@ -221,7 +221,6 @@ function checkDistribution(order_arr) {
     lags.sort(function(a, b) {
         return a - b;
       });
-    console.log("lags are " + lags);
 }
 
 function generateTalkerOrder(words, talker_list) {
