@@ -98,6 +98,15 @@
     border-radius: 10px;
 }
 
+.between-container {
+    border: 3px rgb(255, 255, 255) solid;
+    color:rgb(253, 253, 253);
+    height: 150px;
+    width: 165px;
+    font-size: 30px;
+    border-radius: 10px;
+}
+
 
 .exposure-prompt {
     font-size:20px;

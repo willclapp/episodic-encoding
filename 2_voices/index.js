@@ -8,6 +8,10 @@ let irb = {
 
 timeline.push(irb);
 
+// let audio_check_instructions = {
+
+// }
+
 let general_instructions = {
     type: 'html-keyboard-response',
     stimulus: `<div class="gen_ins"><p>In this experiment, you will hear recordings and will make decisions about them.<br><br>IMPORTANT: Please only accept this task if you are listening through headphones and working in a quiet environment.<br><br>Press the space bar to continue.</p></div>`,
@@ -19,7 +23,13 @@ timeline.push(general_instructions);
 
 let instructions = {
     type: 'html-keyboard-response',
-    stimulus: `<div class="spec_ins"><p>In this experiment, each trial will consist of someone saying a word. Sometimes you will hear a word for the first time, and sometimes the word will be repeated. Your job is to decide whether or not you've already heard the word. If you hear a word for the first time indicate that it's NEW by pressing the 'S' key. If you've already heard the word, indicate that it's OLD by pressing the 'K' key. <br><br>You will hear each word exactly twice. Make sure to listen carefully and proceed through the trials as quickly and accurately as you can. If no response is made within 4 seconds, the trial will advance automatically. Before the main experiment, there will be a brief practice phase where you'll receive feedback on your answers.<br><br>When you're ready to begin the practice round, press the space bar.</p></div>`,
+    stimulus: function() {
+        if (button_order == 'NEW_OLD') {
+            return '<div class="spec_ins"><p>In this experiment, you will be played sound recordings of a series of words, one at a time. Sometimes you will be hearing the word for the first time, and sometimes you will be hearing it for the second time. Your job is to decide whether or not you\'ve already heard the word. If you think it\'s the first time you\'ve heard the word, you should indicate that it\'s NEW by pressing the \'F\' key. If you think that you\'ve already heard the word earlier in the experiment, you should indicate that it\'s OLD by pressing the \'J\' key. <br><br>Make sure to listen carefully and proceed as quickly and accurately as you can. You must answer within 4 seconds, or the next word will play automatically. Before the main experiment, there will be a brief practice phase where you\'ll receive feedback on your answers.<br><br>When you\'re ready to begin the practice round, press the space bar.</p></div>';
+        } else {
+            return '<div class="spec_ins"><p>In this experiment, you will be played sound recordings of a series of words, one at a time. Sometimes you will be hearing the word for the first time, and sometimes you will be hearing it for the second time. Your job is to decide whether or not you\'ve already heard the word. If you think it\'s the first time you\'ve heard the word, you should indicate that it\'s NEW by pressing the \'J\' key. If you think that you\'ve already heard the word earlier in the experiment, you should indicate that it\'s OLD by pressing the \'F\' key. <br><br>Make sure to listen carefully and proceed as quickly and accurately as you can. You must answer within 4 seconds, or the next word will play automatically. Before the main experiment, there will be a brief practice phase where you\'ll receive feedback on your answers.<br><br>When you\'re ready to begin the practice round, press the space bar.</p></div>';
+        }
+    },
     choices: ['space']
 };
 
@@ -34,7 +44,7 @@ for (i = 0; i < num_practice * 2; i++) {
 
 let end_practice = {
     type: 'html-keyboard-response',
-    stimulus: `<div class="spec_ins"><p>The practice round is now complete, and on future trials, you won't receive feedback on your responses.<br><br>When you're ready to move on, press the space bar.</p></div>`,
+    stimulus: `<div class="spec_ins"><p>The practice round is now complete, and for the remainder of the experiment, you won't receive feedback on your responses.<br><br>When you're ready to move on, press the space bar.</p></div>`,
     choices: ['space'],
     on_start: function() {
         jsPsych.setProgressBar(0);
@@ -58,7 +68,7 @@ for (i = 0; i < num_exp * 2; i++) {
 
 let social_instructions = {
     type: 'html-keyboard-response',
-    stimulus: '<div class="pre-test-container"><p>Great Job! You finished the Experiment.<br><br>To help us interpret our results, it would be helpful to learn a little more about you. Please answer the following questions if you have time. None of the questions are required.</p><br><br>Press the space bar to continue.</div>',
+    stimulus: '<div class="pre-test-container"><p>Great Job! You finished the Experiment.<br><br>To help us interpret our results, it would be helpful to learn a little more about you. Please answer the following questions.</p><br>Press the space bar to continue.</div>',
     choices: ['space'],
     post_trial_gap: 250
 }
@@ -68,12 +78,14 @@ timeline.push(social_instructions)
 
 var survey1 = {
     type: 'survey-html-form',
-    preamble: '<p>We would like you to answer answer the following questions.</p>',
+    preamble: '<p><br>We would like you to answer the following questions. <br>If you\'d rather not answer, select "Prefer not to say" or type "NA".</p><br>',
     html: '<ol class="input-wrapper">' +
         hand +
-        audio +
         gender +
         age +
+        region +
+        race +
+        ethnicity +
         language +
         '</ol>'
 };
@@ -81,9 +93,10 @@ var survey1 = {
 
 var survey2 = {
     type: 'survey-html-form',
-    preamble: '<p>We would like you to answer answer the following questions.</p>',
+    preamble: '<p><br>We would like you to answer answer the following questions. <br>If you\'d rather not answer, select "Prefer not to say" or type "NA".</p><br>',
     html: '<ol class="input-wrapper">' +
         assess +
+        audio +
         interruption +
         interruption_time +
         problems +

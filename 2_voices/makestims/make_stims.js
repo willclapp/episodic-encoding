@@ -1,6 +1,6 @@
-let num_practice = 2;
+let num_practice = 4;
 let num_memload = 4;
-let num_exp = 8;
+let num_exp = 4;
 
 let audio_data = {
     ID: 0,
@@ -45,7 +45,7 @@ let response_data = {
 
 let response_temp = {
     type: 'html-keyboard-response', 
-    choices: ['s', 'k'], 
+    choices: ['f', 'j'], 
     stimulus: 'UNKNOWN', 
     trial_duration: 4000, 
     post_trial_gap: 0, 
@@ -55,21 +55,23 @@ let response_temp = {
         // console.log(data.key_press);
         if (data.Phase == 'practice') {
                 jsPsych.setProgressBar(data.Order / (num_practice * 2));
-            } else {
+            } else if (data.Phase == 'memload') {
                 jsPsych.setProgressBar(data.Order / ((num_memload + num_exp) * 2));
+            } else {
+                jsPsych.setProgressBar((data.Order + num_memload + 1) / ((num_memload + num_exp) * 2));
             }
         let correct_response;
         if (data.Buttons == 'NEW_OLD') {
             if (data.Presentation == 'NEW') {
-                correct_response = 83;
+                correct_response = 74;
             } else {
-                correct_response = 75;
+                correct_response = 70;
             }
         } else if (data.Buttons == 'OLD_NEW') {
             if (data.Presentation == 'NEW') {
-                correct_response = 75;
+                correct_response = 74;
             } else {
-                correct_response = 83;
+                correct_response = 70;
             }
         }
         if (data.key_press == null) {

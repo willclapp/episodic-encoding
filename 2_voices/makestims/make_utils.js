@@ -289,8 +289,8 @@ function generateDifferentTalkers(talker_list, num_reps) {
 
     
 function generateTrials(trial_ord, talker_ord, audio_trials, audio_template, response_trials, response_template, phase) {
-    new_old_prompt = '<div class="big-container"><div class="yes-no"><div class="option-container"><p>NEW</p><p>Press S</p></div><div class="option-container"><p>OLD</p><p>Press K</p></div></div></div>';
-    old_new_prompt = '<div class="big-container"><div class="yes-no"><div class="option-container"><p>OLD</p><p>Press S</p></div><div class="option-container"><p>NEW</p><p>Press K</p></div></div></div>';
+    new_old_prompt = '<div class="big-container"><div class="yes-no"><div class="option-container"><p>NEW</p><p>Press F</p></div><div class="option-container"><p>OLD</p><p>Press J</p></div></div></div>';
+    old_new_prompt = '<div class="big-container"><div class="yes-no"><div class="option-container"><p>OLD</p><p>Press F</p></div><div class="option-container"><p>NEW</p><p>Press J</p></div></div></div>';
     let voice_pool = generateDifferentTalkers(talker_ids, talker_ord.length);
 
     let unique_index = -1;
