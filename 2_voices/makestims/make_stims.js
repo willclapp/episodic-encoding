@@ -63,9 +63,9 @@ let response_temp = {
         let correct_response;
         if (data.Buttons == 'NEW_OLD') {
             if (data.Presentation == 'NEW') {
-                correct_response = 74;
-            } else {
                 correct_response = 70;
+            } else {
+                correct_response = 74;
             }
         } else if (data.Buttons == 'OLD_NEW') {
             if (data.Presentation == 'NEW') {
