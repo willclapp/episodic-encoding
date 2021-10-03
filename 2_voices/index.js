@@ -35,7 +35,11 @@ for (i = 0; i < num_practice * 2; i++) {
 let end_practice = {
     type: 'html-keyboard-response',
     stimulus: `<div class="spec_ins"><p>The practice round is now complete, and on future trials, you won't receive feedback on your responses.<br><br>When you're ready to move on, press the space bar.</p></div>`,
-    choices: ['space']
+    choices: ['space'],
+    on_start: function() {
+        jsPsych.setProgressBar(0);
+    }
+    
 };
 
 timeline.push(end_practice);
@@ -97,6 +101,7 @@ timeline.push(survey2)
 jsPsych.init({
     timeline: timeline,
     show_progress_bar: true,
+    auto_update_progress_bar: false,
     // on_finish: function(data) {
     //     proliferate.submit({"trials": data.values()});
     //   }

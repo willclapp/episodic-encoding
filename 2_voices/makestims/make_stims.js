@@ -1,7 +1,6 @@
-let num_practice = 4;
+let num_practice = 2;
 let num_memload = 4;
 let num_exp = 8;
-let word_index = 0;
 
 let audio_data = {
     ID: 0,
@@ -54,6 +53,11 @@ let response_temp = {
     on_finish: function(data) {
         // uncomment next line to see the result of each trial
         // console.log(data.key_press);
+        if (data.Phase == 'practice') {
+                jsPsych.setProgressBar(data.Order / (num_practice * 2));
+            } else {
+                jsPsych.setProgressBar(data.Order / ((num_memload + num_exp) * 2));
+            }
         let correct_response;
         if (data.Buttons == 'NEW_OLD') {
             if (data.Presentation == 'NEW') {
