@@ -58,7 +58,7 @@ let response_temp = {
             } else if (data.Phase == 'memload') {
                 jsPsych.setProgressBar(data.Order / ((num_memload + num_exp) * 2));
             } else {
-                jsPsych.setProgressBar((data.Order + num_memload + 1) / ((num_memload + num_exp) * 2));
+                jsPsych.setProgressBar((data.Order + num_memload + 4) / ((num_memload + num_exp) * 2));
             }
         let correct_response;
         if (data.Buttons == 'NEW_OLD') {

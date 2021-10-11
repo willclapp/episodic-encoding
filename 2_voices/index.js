@@ -16,20 +16,6 @@ let general_instructions = {
 
 timeline.push(general_instructions);
 
-// let audio_check_audio = [
-//     'audio/audiocheck/IIO.wav',
-//     'audio/audiocheck/IIQ.wav',
-//     'audio/audiocheck/IOI.wav',
-//     'audio/audiocheck/IQI.wav',
-//     'audio/audiocheck/OII.wav',
-//     'audio/audiocheck/QII.wav',
-//     'audio/audiocheck/silence.wav'
-// ];
-
-// let preload = {
-//     type: jsPsychPreload,
-//     audio: audio
-// }
 
 let audio_check_instructions = {
     type: 'html-keyboard-response',
