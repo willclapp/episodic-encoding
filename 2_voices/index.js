@@ -23,20 +23,20 @@ let audio_check_instructions = {
     choices: ['space']
 }
 
-timeline.push(audio_check_instructions);
-for (let i = 0; i < audiocheck_trials_first.length; i++) {
-    timeline.push(audiocheck_trials_first[i][0]);
-    timeline.push(audiocheck_trials_first[i][1]);
-}
+// timeline.push(audio_check_instructions, audio_check_reset);
+// for (let i = 0; i < audiocheck_trials_first.length; i++) {
+//     timeline.push(audiocheck_trials_first[i][0]);
+//     timeline.push(audiocheck_trials_first[i][1]);
+// }
 
-timeline.push(audio_check_evaluate, audio_check_between);
+// timeline.push(audio_check_evaluate, audio_check_between);
 
-for (let i = 0; i < audiocheck_trials_second.length; i++) {
-    timeline.push(audiocheck_trials_second[i][0]);
-    timeline.push(audiocheck_trials_second[i][1]);
-}
+// for (let i = 0; i < audiocheck_trials_second.length; i++) {
+//     timeline.push(audiocheck_trials_second[i][0]);
+//     timeline.push(audiocheck_trials_second[i][1]);
+// }
 
-timeline.push(audio_check_second_evaluate, audio_check_after_bad, audio_check_after_good);
+// timeline.push(audio_check_second_evaluate, audio_check_after_bad, audio_check_after_good);
 
 
 
@@ -44,9 +44,9 @@ let instructions = {
     type: 'html-keyboard-response',
     stimulus: function() {
         if (button_order == 'NEW_OLD') {
-            return '<div class="spec_ins"><p>In this experiment, you will be played sound recordings of a series of words, one at a time. Sometimes you will be hearing the word for the first time, and sometimes you will be hearing it for the second time. Your job is to decide whether or not you\'ve already heard the word. If you think it\'s the first time you\'ve heard the word, you should indicate that it\'s NEW by pressing the \'F\' key. If you think that you\'ve already heard the word earlier in the experiment, you should indicate that it\'s OLD by pressing the \'J\' key. <br><br>Make sure to listen carefully and proceed as quickly and accurately as you can. You must answer within 4 seconds, or the next word will play automatically. Before the main experiment, there will be a brief practice phase where you\'ll receive feedback on your answers.<br><br>When you\'re ready to begin the practice round, press the space bar.</p></div>';
+            return '<div class="spec_ins"><p>In this experiment, you will be played sound recordings of a series of words, one at a time. Sometimes you will be hearing the word for the first time, and sometimes you will be hearing it for the second time. Your job is to decide whether or not you\'ve already heard the word. If you think it\'s the first time you\'ve heard the word, you should indicate that it\'s NEW by pressing the \'D\' key. If you think that you\'ve already heard the word earlier in the experiment, you should indicate that it\'s OLD by pressing the \'K\' key. <br><br>Make sure to listen carefully and proceed as quickly and accurately as you can. You must answer within 4 seconds, or the next word will play automatically. Before the main experiment, there will be a brief practice phase where you\'ll receive feedback on your answers.<br><br>When you\'re ready to begin the practice round, press the space bar.</p></div>';
         } else {
-            return '<div class="spec_ins"><p>In this experiment, you will be played sound recordings of a series of words, one at a time. Sometimes you will be hearing the word for the first time, and sometimes you will be hearing it for the second time. Your job is to decide whether or not you\'ve already heard the word. If you think it\'s the first time you\'ve heard the word, you should indicate that it\'s NEW by pressing the \'J\' key. If you think that you\'ve already heard the word earlier in the experiment, you should indicate that it\'s OLD by pressing the \'F\' key. <br><br>Make sure to listen carefully and proceed as quickly and accurately as you can. You must answer within 4 seconds, or the next word will play automatically. Before the main experiment, there will be a brief practice phase where you\'ll receive feedback on your answers.<br><br>When you\'re ready to begin the practice round, press the space bar.</p></div>';
+            return '<div class="spec_ins"><p>In this experiment, you will be played sound recordings of a series of words, one at a time. Sometimes you will be hearing the word for the first time, and sometimes you will be hearing it for the second time. Your job is to decide whether or not you\'ve already heard the word. If you think it\'s the first time you\'ve heard the word, you should indicate that it\'s NEW by pressing the \'K\' key. If you think that you\'ve already heard the word earlier in the experiment, you should indicate that it\'s OLD by pressing the \'D\' key. <br><br>Make sure to listen carefully and proceed as quickly and accurately as you can. You must answer within 4 seconds, or the next word will play automatically. Before the main experiment, there will be a brief practice phase where you\'ll receive feedback on your answers.<br><br>When you\'re ready to begin the practice round, press the space bar.</p></div>';
         }
     },
     choices: ['space']

@@ -45,14 +45,15 @@ let response_data = {
 
 let response_temp = {
     type: 'html-keyboard-response', 
-    choices: ['f', 'j'], 
+    choices: ['d', 'k'], 
     stimulus: 'UNKNOWN', 
     trial_duration: 4000, 
     post_trial_gap: 0, 
     data: {},
     on_finish: function(data) {
         // uncomment next line to see the result of each trial
-        // console.log(data.key_press);
+        console.log(data.key_press);
+        
         if (data.Phase == 'practice') {
                 jsPsych.setProgressBar(data.Order / (num_practice * 2));
             } else if (data.Phase == 'memload') {
@@ -63,15 +64,15 @@ let response_temp = {
         let correct_response;
         if (data.Buttons == 'NEW_OLD') {
             if (data.Presentation == 'NEW') {
-                correct_response = 70;
+                correct_response = 68;
             } else {
-                correct_response = 74;
+                correct_response = 75;
             }
         } else if (data.Buttons == 'OLD_NEW') {
             if (data.Presentation == 'NEW') {
-                correct_response = 74;
+                correct_response = 75;
             } else {
-                correct_response = 70;
+                correct_response = 68;
             }
         }
         if (data.key_press == null) {
