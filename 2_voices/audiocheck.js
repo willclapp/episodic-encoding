@@ -1,3 +1,13 @@
+let audio_check_reset = {
+    type: 'html-keyboard-response',
+    stimulus: " ",
+    trial_duration: 10,
+    on_finish: function() {
+        wrong_phase = 0;
+        correct_quiet = 0;
+    }
+}
+
 let audio_check_evaluate = {
     type: 'html-keyboard-response',
     stimulus: " ",

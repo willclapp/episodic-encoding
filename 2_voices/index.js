@@ -23,20 +23,20 @@ let audio_check_instructions = {
     choices: ['space']
 }
 
-// timeline.push(audio_check_instructions, audio_check_reset);
-// for (let i = 0; i < audiocheck_trials_first.length; i++) {
-//     timeline.push(audiocheck_trials_first[i][0]);
-//     timeline.push(audiocheck_trials_first[i][1]);
-// }
+timeline.push(audio_check_instructions, audio_check_reset);
+for (let i = 0; i < audiocheck_trials_first.length; i++) {
+    timeline.push(audiocheck_trials_first[i][0]);
+    timeline.push(audiocheck_trials_first[i][1]);
+}
 
-// timeline.push(audio_check_evaluate, audio_check_between);
+timeline.push(audio_check_evaluate, audio_check_between);
 
-// for (let i = 0; i < audiocheck_trials_second.length; i++) {
-//     timeline.push(audiocheck_trials_second[i][0]);
-//     timeline.push(audiocheck_trials_second[i][1]);
-// }
+for (let i = 0; i < audiocheck_trials_second.length; i++) {
+    timeline.push(audiocheck_trials_second[i][0]);
+    timeline.push(audiocheck_trials_second[i][1]);
+}
 
-// timeline.push(audio_check_second_evaluate, audio_check_after_bad, audio_check_after_good);
+timeline.push(audio_check_second_evaluate, audio_check_after_bad, audio_check_after_good);
 
 
 
