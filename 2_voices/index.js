@@ -8,10 +8,6 @@ let irb = {
 
 timeline.push(irb);
 
-// let audio_check_instructions = {
-
-// }
-
 let general_instructions = {
     type: 'html-keyboard-response',
     stimulus: `<div class="gen_ins"><p>In this experiment, you will hear recordings and will make decisions about them.<br><br>IMPORTANT: Please only accept this task if you are listening through headphones and working in a quiet environment.<br><br>Press the space bar to continue.</p></div>`,
@@ -19,6 +15,43 @@ let general_instructions = {
 };
 
 timeline.push(general_instructions);
+
+// let audio_check_audio = [
+//     'audio/audiocheck/IIO.wav',
+//     'audio/audiocheck/IIQ.wav',
+//     'audio/audiocheck/IOI.wav',
+//     'audio/audiocheck/IQI.wav',
+//     'audio/audiocheck/OII.wav',
+//     'audio/audiocheck/QII.wav',
+//     'audio/audiocheck/silence.wav'
+// ];
+
+// let preload = {
+//     type: jsPsychPreload,
+//     audio: audio
+// }
+
+let audio_check_instructions = {
+    type: 'html-keyboard-response',
+    stimulus: `<div class="gen_ins"><p>Before the experiment begins, we'd like to do a quick audio check. During the audio check, you'll hear three tones in a row, and then be asked to select which tone was the quietest. Sometimes, the three tones will all be the same.<br><br>If the first tone was the quietest, press '1', if the second tone was the quietest, press '2', and if the third tone was the quietest, press '3'. If all the tones seemed about the same, press '0'.<br><br>When you're ready, press the space bar to begin the audio check.</p></div>`,
+    choices: ['space']
+}
+
+timeline.push(audio_check_instructions);
+for (let i = 0; i < audiocheck_trials_first.length; i++) {
+    timeline.push(audiocheck_trials_first[i][0]);
+    timeline.push(audiocheck_trials_first[i][1]);
+}
+
+timeline.push(audio_check_evaluate, audio_check_between);
+
+for (let i = 0; i < audiocheck_trials_second.length; i++) {
+    timeline.push(audiocheck_trials_second[i][0]);
+    timeline.push(audiocheck_trials_second[i][1]);
+}
+
+timeline.push(audio_check_second_evaluate, audio_check_after_bad, audio_check_after_good);
+
 
 
 let instructions = {
@@ -75,7 +108,6 @@ let social_instructions = {
 
 timeline.push(social_instructions)
 
-
 var survey1 = {
     type: 'survey-html-form',
     preamble: '<p><br>We would like you to answer the following questions. <br>If you\'d rather not answer, select "Prefer not to say" or type "NA".</p><br>',
@@ -89,7 +121,6 @@ var survey1 = {
         language +
         '</ol>'
 };
-
 
 var survey2 = {
     type: 'survey-html-form',
@@ -105,11 +136,8 @@ var survey2 = {
         '</ol>'
 };
 
-
 timeline.push(survey1)
 timeline.push(survey2)
-
-
 
 jsPsych.init({
     timeline: timeline,

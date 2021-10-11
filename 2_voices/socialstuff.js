@@ -107,6 +107,7 @@ var region_options = [
     html_input({ type: 'radio', name: 'region', id: 'southwest', label: 'Southwest'}),
     html_input({ type: 'radio', name: 'region', id: 'midwest', label: 'Midwest'}),
     html_input({ type: 'radio', name: 'region', id: 'northeast', label: 'Northeast'}),
+    html_input({ type: 'radio', name: 'region', id: 'midatlantic', label: 'Midatlantic'}),
     html_input({ type: 'radio', name: 'region', id: 'south', label: 'South'}),
     html_input({ type: 'radio', name: 'region', id: 'alaska', label: 'Alaska'}),
     html_input({ type: 'radio', name: 'region', id: 'hawaii', label: 'Hawaii'}),

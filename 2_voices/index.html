@@ -3,7 +3,6 @@
 
 <head>
     <title>Word categorization study</title>
-    <title>Word categorization study</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- <script src="https://proliferate.alps.science/static/js/proliferate.js" type="text/javascript"></script> -->
     <script src="jspsych-6.2.0/jspsych.js"></script>
@@ -32,6 +31,9 @@
     // some global variables
     let talker_ids = ['M1', 'M2'];
     let identical_tokens = false;
+    let wrong_phase = 0;
+    let correct_quiet = 0;
+    let pass = false;
 </script>
 <script src="socialstuff.js"></script>
 <script src="csvs/word_ids.js"></script>
@@ -40,6 +42,7 @@
     word_ids = shuffle(word_ids);
 </script>
 <script src="makestims/make_stims.js"></script>
-<script src = "makestims/practice_feedback.js"></script>
+<script src="makestims/practice_feedback.js"></script>
+<script src="audiocheck.js"></script>
 <script src="index.js"></script>
 </html>
