@@ -1,3 +1,11 @@
+let preload_audiocheck = [
+    'audio/audiocheck/IO.wav',
+    'audio/audiocheck/IQ.wav',
+    'audio/audiocheck/OI.wav',
+    'audio/audiocheck/QI.wav',
+    'audio/audiocheck/silence.wav'
+];
+
 let audio_check_reset = {
     type: 'html-keyboard-response',
     stimulus: " ",
@@ -80,18 +88,19 @@ let audio_check_after_good = {
     choices: ['space']
 }
 
-let html_content = '<div class="quietest-container"><div><p class="quietest">Which sound was the quietest?</p></div><div class="yes-no"><div class="quietest_option"><p>FIRST</p><p>Press 1</p></div><div class="quietest_option"><p>SECOND</p><p>Press 2</p></div><div class="quietest_option"><p>THIRD</p><p>Press 3</p></div><div class="quietest_option"><p>NONE</p><p>Press 0</p></div></div></div>'
+let html_content = '<div class="quietest-container"><div><p class="quietest">Which sound was the quietest?</p></div><div class="yes-no"><div class="quietest_option"><p>FIRST</p><p>Press 1</p></div><div class="quietest_option"><p>SECOND</p><p>Press 2</p></div><div class="quietest_option"><p>NONE</p><p>Press 0</p></div></div></div>'
 
 
 
-let iio_audio = {
-    on_start: function() {
-        if (pass) {
-            jsPsych.finishTrial(data);
-        }
-    },
+let io_audio = {
     type: 'audio-keyboard-response', 
-    stimulus: 'audio/audiocheck/IIO.wav',   
+    stimulus: function() {
+        if (!pass) {
+            return 'audio/audiocheck/IO.wav'
+        } else {
+            return 'audio/audiocheck/silence.wav'
+        }
+    },   
     prompt: function() {
         if (!pass) {
             return html_content;
@@ -104,7 +113,7 @@ let iio_audio = {
     response_allowed_while_playing: false
 }
 
-let iio_response = {
+let io_response = {
     type: 'html-keyboard-response', 
     stimulus: function() {
         if (!pass) {
@@ -113,7 +122,7 @@ let iio_response = {
             return " ";
         }
     },
-    choices: ['1', '2', '3', '0'],
+    choices: ['1', '2', '0'],
     trial_duration: function() {
         if (!pass) {
             return 5000;
@@ -129,58 +138,6 @@ let iio_response = {
         }
     }, 
     on_finish: function(data) {
-        if (data.key_press == 51) {
-            wrong_phase++;
-        }
-        console.log(wrong_phase);
-    }
-}
-
-let ioi_audio = {
-    on_start: function() {
-        if (pass) {
-            jsPsych.finishTrial(data);
-        }
-    },
-    type: 'audio-keyboard-response', 
-    stimulus: 'audio/audiocheck/IOI.wav',
-    prompt: function() {
-        if (!pass) {
-            return html_content;
-        } else {
-            return " ";
-        }
-    },
-    trial_ends_after_audio: true, 
-    post_trial_gap: 0, 
-    response_allowed_while_playing: false
-}
-
-let ioi_response = {
-    type: 'html-keyboard-response', 
-    stimulus: function() {
-        if (!pass) {
-            return html_content;
-        } else {
-            return " ";
-        }
-    },
-    choices: ['1', '2', '3', '0'],
-    trial_duration: function() {
-        if (!pass) {
-            return 5000;
-        } else {
-            return 0;
-        }
-    },
-    post_trial_gap: function() {
-        if (!pass) {
-            return 1000;
-        } else {
-            return 0;
-        }
-    },  
-    on_finish: function(data) {
         if (data.key_press == 50) {
             wrong_phase++;
         }
@@ -188,14 +145,15 @@ let ioi_response = {
     }
 }
 
-let oii_audio = {
-    on_start: function() {
-        if (pass) {
-            jsPsych.finishTrial(data);
-        }
-    },
+let oi_audio = {
     type: 'audio-keyboard-response', 
-    stimulus: 'audio/audiocheck/OII.wav',
+    stimulus: function() {
+        if (!pass) {
+            return 'audio/audiocheck/OI.wav'
+        } else {
+            return 'audio/audiocheck/silence.wav'
+        }
+    }, 
     prompt: function() {
         if (!pass) {
             return html_content;
@@ -208,7 +166,7 @@ let oii_audio = {
     response_allowed_while_playing: false
 }
 
-let oii_response = {
+let oi_response = {
     type: 'html-keyboard-response', 
     stimulus: function() {
         if (!pass) {
@@ -217,7 +175,7 @@ let oii_response = {
             return " ";
         }
     },
-    choices: ['1', '2', '3', '0'],
+    choices: ['1', '2', '0'],
     trial_duration: function() {
         if (!pass) {
             return 5000;
@@ -240,14 +198,15 @@ let oii_response = {
     }
 }
 
-let qii_audio = {
-    on_start: function() {
-        if (pass) {
-            jsPsych.finishTrial(data);
-        }
-    },
+let iq_audio = {
     type: 'audio-keyboard-response', 
-    stimulus: 'audio/audiocheck/QII.wav',
+    stimulus: function() {
+        if (!pass) {
+            return 'audio/audiocheck/IQ.wav'
+        } else {
+            return 'audio/audiocheck/silence.wav'
+        }
+    }, 
     prompt: function() {
         if (!pass) {
             return html_content;
@@ -260,7 +219,7 @@ let qii_audio = {
     response_allowed_while_playing: false
 }
 
-let qii_response = {
+let iq_response = {
     type: 'html-keyboard-response', 
     stimulus: function() {
         if (!pass) {
@@ -269,59 +228,7 @@ let qii_response = {
             return " ";
         }
     },
-    choices: ['1', '2', '3', '0'],
-    trial_duration: function() {
-        if (!pass) {
-            return 5000;
-        } else {
-            return 0;
-        }
-    },
-    post_trial_gap: function() {
-        if (!pass) {
-            return 1000;
-        } else {
-            return 0;
-        }
-    },  
-    on_finish: function(data) {
-        if (data.key_press == 49) {
-            correct_quiet++;
-        }
-        console.log(correct_quiet);
-    }
-}
-
-let iqi_audio = {
-    on_start: function() {
-        if (pass) {
-            jsPsych.finishTrial(data);
-        }
-    },
-    type: 'audio-keyboard-response', 
-    stimulus: 'audio/audiocheck/IQI.wav',
-    prompt: function() {
-        if (!pass) {
-            return html_content;
-        } else {
-            return " ";
-        }
-    },
-    trial_ends_after_audio: true, 
-    post_trial_gap: 0, 
-    response_allowed_while_playing: false
-}
-
-let iqi_response = {
-    type: 'html-keyboard-response', 
-    stimulus: function() {
-        if (!pass) {
-            return html_content;
-        } else {
-            return " ";
-        }
-    },
-    choices: ['1', '2', '3', '0'],
+    choices: ['1', '2', '0'],
     trial_duration: function() {
         if (!pass) {
             return 5000;
@@ -344,14 +251,15 @@ let iqi_response = {
     }
 }
 
-let iiq_audio = {
-    on_start: function() {
-        if (pass) {
-            jsPsych.finishTrial(data);
-        }
-    },
+let qi_audio = {
     type: 'audio-keyboard-response', 
-    stimulus: 'audio/audiocheck/IIQ.wav',
+    stimulus: function() {
+        if (!pass) {
+            return 'audio/audiocheck/QI.wav'
+        } else {
+            return 'audio/audiocheck/silence.wav'
+        }
+    }, 
     prompt: function() {
         if (!pass) {
             return html_content;
@@ -364,7 +272,7 @@ let iiq_audio = {
     response_allowed_while_playing: false
 }
 
-let iiq_response = {
+let qi_response = {
     type: 'html-keyboard-response', 
     stimulus: function() {
         if (!pass) {
@@ -373,7 +281,7 @@ let iiq_response = {
             return " ";
         }
     },
-    choices: ['1', '2', '3', '0'],
+    choices: ['1', '2', '0'],
     trial_duration: function() {
         if (!pass) {
             return 5000;
@@ -389,7 +297,7 @@ let iiq_response = {
         }
     },  
     on_finish: function(data) {
-        if (data.key_press == 51) {
+        if (data.key_press == 49) {
             correct_quiet++;
         }
         console.log(correct_quiet);
@@ -397,32 +305,24 @@ let iiq_response = {
 }
 
 let audiocheck_polarity = [
-    [iio_audio, iio_response],
-    [ioi_audio, ioi_response],
-    [oii_audio, oii_response],
-    [iio_audio, iio_response],
-    [ioi_audio, ioi_response],
-    [oii_audio, oii_response],
-    [iio_audio, iio_response],
-    [ioi_audio, ioi_response],
-    [oii_audio, oii_response],
-    [iio_audio, iio_response],
-    [ioi_audio, ioi_response],
-    [oii_audio, oii_response]
+    [io_audio, io_response],
+    [io_audio, io_response],
+    [io_audio, io_response],
+    [io_audio, io_response],
+    [oi_audio, oi_response],
+    [oi_audio, oi_response],
+    [oi_audio, oi_response],
+    [oi_audio, oi_response]
 ]
 let audiocheck_volume = [
-    [iiq_audio, iiq_response],
-    [iqi_audio, iqi_response],
-    [qii_audio, qii_response],
-    [iiq_audio, iiq_response],
-    [iqi_audio, iqi_response],
-    [qii_audio, qii_response],
-    [iiq_audio, iiq_response],
-    [iqi_audio, iqi_response],
-    [qii_audio, qii_response],
-    [iiq_audio, iiq_response],
-    [iqi_audio, iqi_response],
-    [qii_audio, qii_response]
+    [iq_audio, iq_response],
+    [iq_audio, iq_response],
+    [iq_audio, iq_response],
+    [iq_audio, iq_response],
+    [qi_audio, qi_response],
+    [qi_audio, qi_response],
+    [qi_audio, qi_response],
+    [qi_audio, qi_response]
 ]
 
 audiocheck_polarity = shuffle(audiocheck_polarity);
@@ -441,4 +341,3 @@ audiocheck_trials_second = shuffle(audiocheck_trials_second);
 // 0 is 48
 // 1 is 49
 // 2 is 50
-// 3 is 51

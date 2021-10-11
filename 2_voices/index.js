@@ -19,7 +19,7 @@ timeline.push(general_instructions);
 
 let audio_check_instructions = {
     type: 'html-keyboard-response',
-    stimulus: `<div class="gen_ins"><p>Before the experiment begins, we'd like to do a quick audio check. During the audio check, you'll hear three tones in a row, and then be asked to select which tone was the quietest. Sometimes, the three tones will all be the same.<br><br>If the first tone was the quietest, press '1', if the second tone was the quietest, press '2', and if the third tone was the quietest, press '3'. If all the tones seemed about the same, press '0'.<br><br>When you're ready, press the space bar to begin the audio check.</p></div>`,
+    stimulus: `<div class="gen_ins"><p>Before the experiment begins, we'd like to do a quick audio check. During the audio check, you'll hear two tones in a row, and then be asked to select which tone was quieter. Sometimes, the two tones will be the same.<br><br>If the first tone was quieter, press '1', and if the second tone was quieter, press '2'. If both tones seemed about the same, press '0'.<br><br>When you're ready, press the space bar to begin the audio check.</p></div>`,
     choices: ['space']
 }
 
@@ -134,5 +134,6 @@ jsPsych.init({
     //   }
     on_finish: function () {
         jsPsych.data.displayData('csv');
-    }
+    },
+    preload_audio: preload_audiocheck
 });
