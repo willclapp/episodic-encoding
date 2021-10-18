@@ -1,6 +1,6 @@
 let num_practice = 8;
 let num_memload = 16;
-let num_exp = 4;
+let num_exp = 140;
 
 let audio_data = {
     ID: 0,
@@ -15,7 +15,7 @@ let audio_data = {
     Buttons: 'UNKNOWN', 
     Presentation: 'UNKNOWN', 
     Recording: 0, 
-    token_repeated: false
+    token_repeated: true
 }
 
 let audio_temp = {
@@ -25,7 +25,7 @@ let audio_temp = {
     trial_ends_after_audio: true, 
     post_trial_gap: 0, 
     response_allowed_while_playing: false, 
-    choices: ['d', 'k'],  
+    choices: ['d', 'k'], 
     data: {}
 }
 
@@ -40,7 +40,7 @@ let response_data = {
     Buttons: 'UNKNOWN',
     Presentation: 'UNKNOWN', 
     Recording: 0, 
-    token_repeated: false,
+    token_repeated: true,
     case: 'UNKNOWN'
 }
 
