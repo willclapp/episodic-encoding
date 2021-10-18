@@ -1,0 +1,5 @@
+*.config
+*proliferate-client/
+*.py
+*.exps
+*data/
