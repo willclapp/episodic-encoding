@@ -23,5 +23,11 @@ let inter_trial = {
     type: 'html-keyboard-response',
     trial_duration: 1000,
     response_ends_trial: false,
-    stimulus: '<div class="big-container"><div class="yes-no"><div class="between-container"><p>NEW</p><p>Press S</p></div><div class="between-container"><p>OLD</p><p>Press K</p></div></div></div>'
+    stimulus: function() {
+        if (button_order == "NEW_OLD") {
+                return '<div class="big-container"><div class="yes-no"><div class="between-container"><p>NEW</p><p>Press D</p></div><div class="between-container"><p>OLD</p><p>Press K</p></div></div></div>';
+            } else {
+                return '<div class="big-container"><div class="yes-no"><div class="between-container"><p>OLD</p><p>Press D</p></div><div class="between-container"><p>NEW</p><p>Press K</p></div></div></div>';
+            }
+        }
 }
