@@ -53,7 +53,7 @@ let response_temp = {
     data: {},
     on_finish: function(data) {
         // uncomment next line to see the result of each trial
-        console.log(data.key_press);
+        // console.log(data.key_press);
         
         if (data.Phase == 'practice') {
                 jsPsych.setProgressBar(data.Order / (num_practice * 2));
