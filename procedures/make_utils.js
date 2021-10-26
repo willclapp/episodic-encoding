@@ -224,23 +224,33 @@ function checkDistribution(order_arr) {
 }
 
 function generateTalkerOrder(words, talker_list) {
-    let possibilities = [];
-    for (let i = 0; i < talker_list.length; i++) {
-        let str = "Same_" + talker_list[i];
-        possibilities.push(str);
-        str = "Diff_" + talker_list[i];
-        possibilities.push(str);
-    }
-    let num_per_case = Math.ceil(words.length / possibilities.length);
     let out_arr = [];
-    for (let i = 0; i < num_per_case; i++) {
-        shuffle(possibilities);
-        for (let j = 0; j < possibilities.length; j++) {
-            if (out_arr.length < words.length) {
-                out_arr.push(possibilities[j]);
+    if (talker_list.length > 1) {
+        let possibilities = [];
+        for (let i = 0; i < talker_list.length; i++) {
+            let str = "Same_" + talker_list[i];
+            possibilities.push(str);
+            str = "Diff_" + talker_list[i];
+            possibilities.push(str);
+        }
+        let num_per_case = Math.ceil(words.length / possibilities.length);
+        for (let i = 0; i < num_per_case; i++) {
+            shuffle(possibilities);
+            for (let j = 0; j < possibilities.length; j++) {
+                if (out_arr.length < words.length) {
+                    out_arr.push(possibilities[j]);
+                }
             }
         }
+    } else {
+        for (let i = 0; i < words.length; i++) {
+            out_arr.push("Same_" + talker_list[0]);
+        }
     }
+
+
+
+    
     return out_arr;
 }
 
